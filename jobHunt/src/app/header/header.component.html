@@ -1,19 +1,26 @@
 <header>
-  <div class="logo">
-    <!-- Add your logo image or text here -->
-  </div>
-  <nav>
-    <ul>
-      <li><a routerLink="/acceuil">Acceuil</a></li>
-      <li><a routerLink="/jobs">Trouver un job</a></li>
-      <li><a routerLink="/entreprise">Trouver une entreprise</a></li>
-      <li><a routerLink="/salaire">Estimation de salaire</a></li>
-    </ul>
-  </nav>
-  <div class="search-logo">
-    <!-- Add your search logo image or icon here -->
-  </div>
-  <div class="account-logo">
-    <!-- Add your account logo image or icon here -->
-  </div>
+  <mat-toolbar class="header-toolbar">
+    <a class="logo" routerLink="/">
+      <img src="../../assets/jobHuntLogo.jpeg" alt="">
+    </a>
+    
+    <nav>
+      <a mat-button routerLink="/jobs">Trouver un job</a>
+      <a mat-button routerLink="/entreprise">Trouver une entreprise</a>
+      <a mat-button routerLink="/salaire">Estimation de salaire</a>
+    </nav>
+    
+    <span class="flex-spacer"></span>
+    
+    <div class="search-container">
+      <div class="input-group">
+          <mat-icon class="search-icon" matPrefix>search</mat-icon>
+        <input class="form-control" placeholder="Search">
+      </div>
+    </div>
+
+    <a class="account-logo" routerLink="/account">
+      <i class="material-icons white-icon">account_circle</i>
+    </a>
+  </mat-toolbar>
 </header>

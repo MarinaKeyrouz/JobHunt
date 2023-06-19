@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  showSearch: boolean = false;
 
+  toggleSearch(): void {
+    this.showSearch = !this.showSearch;
+  }
 }

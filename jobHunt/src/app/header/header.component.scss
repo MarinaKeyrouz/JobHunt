@@ -1,0 +1,66 @@
+.header-toolbar {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+} 
+
+.logo img {
+  width: 45%;
+  vertical-align: middle;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.white-icon {
+  color: black;
+}
+
+.search-input {
+  width: 200px;
+  background-color: white;
+}
+
+.search-input input {
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.input-group-text {
+  background-color: white;
+  border: none;
+}
+
+.input-group-text i {
+  color: #999;
+}
+
+.form-control {
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.search-icon {
+  color: black;
+  vertical-align: middle;
+}
