@@ -11,8 +11,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+
 import { UnderHeaderComponent } from './under-header/under-header.component';
 import { FooterComponent } from './footer/footer.component';
+import { JobCardComponent } from './job-card/job-card.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     HomeComponent,
     UnderHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    JobCardComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
