@@ -7,7 +7,7 @@
     <nav>
       <a mat-button routerLink="/jobs">Trouver un job</a>
       <a mat-button routerLink="/entreprise">Trouver une entreprise</a>
-      <a mat-button routerLink="/salaire">Estimation de salaire</a>
+      <a mat-button routerLink="/myapplications">Mes Demandes</a>
     </nav>
     
     <span class="flex-spacer"></span>
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <a class="account-logo" routerLink="/account">
+    <a class="account-logo" (click)="redirectToAccount()">
       <i class="material-icons white-icon">account_circle</i>
     </a>
   </mat-toolbar>

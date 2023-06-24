@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  showSearch: boolean = false;
+  
+  constructor(private router: Router, private authService: AuthService) { }
 
-  toggleSearch(): void {
-    this.showSearch = !this.showSearch;
+  redirectToAccount() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/account']);
+    } else {
+      this.router.navigate(['/signin']);
+    }
   }
+
 }

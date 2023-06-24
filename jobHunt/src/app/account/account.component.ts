@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Job } from '../models/job';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-account',
@@ -13,6 +13,8 @@ export class AccountComponent {
   number: string = '1234567890';
   isEditing: boolean = false;
 
+  constructor(private authService: AuthService) { }
+
   saveAccountInfo(): void {
     this.toggleEditing();
   }
@@ -25,4 +27,9 @@ export class AccountComponent {
     const file = event.target.files[0];
     // Additional logic for handling CV upload
   }
+
+  signOut() {
+    this.authService.signOut();
+  }
+
 }

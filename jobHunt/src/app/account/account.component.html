@@ -40,7 +40,9 @@
     </div>
     <div class="actions">
         <button (click)="toggleEditing()">{{ isEditing ? 'Save' : 'Edit' }}</button>
+        <button (click)="signOut()">Sign Out</button>
     </div>
+
     <div class="cv-upload">
         <h3>Upload CV</h3>
         <input type="file" accept=".pdf" (change)="handleCVUpload($event)" />
