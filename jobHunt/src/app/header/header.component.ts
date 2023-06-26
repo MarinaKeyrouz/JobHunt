@@ -9,14 +9,6 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent {
   
-  constructor(private router: Router, private authService: AuthService) { }
-
-  redirectToAccount() {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/account']);
-    } else {
-      this.router.navigate(['/signin']);
-    }
-  }
+  constructor(private router: Router, public authService: AuthService) { }
 
 }

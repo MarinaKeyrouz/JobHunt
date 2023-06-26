@@ -2,21 +2,12 @@
     <h2>Account Information</h2>
     <div class="account-details">
         <div class="info-row">
-            <div class="label">First Name:</div>
+            <div class="label">Full Name:</div>
             <div class="value">
                 <ng-container *ngIf="isEditing; else viewModeFirstName">
-                    <input type="text" [(ngModel)]="firstName" />
+                    <input type="text" [(ngModel)]="fullName" />
                 </ng-container>
-                <ng-template #viewModeFirstName>{{ firstName }}</ng-template>
-            </div>
-        </div>
-        <div class="info-row">
-            <div class="label">Last Name:</div>
-            <div class="value">
-                <ng-container *ngIf="isEditing; else viewModeLastName">
-                    <input type="text" [(ngModel)]="lastName" />
-                </ng-container>
-                <ng-template #viewModeLastName>{{ lastName }}</ng-template>
+                <ng-template #viewModeFirstName>{{ fullName }}</ng-template>
             </div>
         </div>
         <div class="info-row">
@@ -26,15 +17,6 @@
                     <input type="email" [(ngModel)]="email" />
                 </ng-container>
                 <ng-template #viewModeEmail>{{ email }}</ng-template>
-            </div>
-        </div>
-        <div class="info-row">
-            <div class="label">Number:</div>
-            <div class="value">
-                <ng-container *ngIf="isEditing; else viewModeNumber">
-                    <input type="text" [(ngModel)]="number" />
-                </ng-container>
-                <ng-template #viewModeNumber>{{ number }}</ng-template>
             </div>
         </div>
     </div>

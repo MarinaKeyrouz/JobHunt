@@ -7,13 +7,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent {
-  firstName: string = 'John';
-  lastName: string = 'Doe';
-  email: string = 'johndoe@example.com';
-  number: string = '1234567890';
+  fullName: string = "";
+  email: string = "";
+  isCompany: boolean = false;
   isEditing: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+    this.authService.isLogged();
+  }
 
   saveAccountInfo(): void {
     this.toggleEditing();
@@ -29,7 +30,13 @@ export class AccountComponent {
   }
 
   signOut() {
-    this.authService.signOut();
+    this.authService.signOut().subscribe(
+      () => {
+
+      },
+      (error) => {
+      }
+    );
   }
 
 }

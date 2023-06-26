@@ -19,8 +19,17 @@
       </div>
     </div>
 
-    <a class="account-logo" (click)="redirectToAccount()">
-      <i class="material-icons white-icon">account_circle</i>
-    </a>
+    <div>
+      <span *ngIf="authService.connectedUser">
+        {{ authService.connectedUser.fullName }}
+        <a class="account-logo" routerLink="/account" routerLinkActive="active-link">
+          <i class="material-icons white-icon">account_circle</i>
+        </a>
+      </span>
+      <button *ngIf="!authService.connectedUser" routerLink="/signin" routerLinkActive="active-link" mat-raised-button color="accent">Sign In</button>
+      <button *ngIf="!authService.connectedUser" routerLink="/signup" routerLinkActive="active-link" mat-raised-button color="accent">Sign Up</button>
+    </div>
+
+    
   </mat-toolbar>
 </header>

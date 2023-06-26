@@ -9,4 +9,7 @@ import { Job } from '../models/job';
 export class JobCardComponent {
   @Input()
   job!: Job;
+
+  
+
 }

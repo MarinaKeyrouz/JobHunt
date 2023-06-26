@@ -1,53 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  connectedUser:any = null;
 
-  private apiUrl = 'https://example.com/api'; // Replace with your API endpoint
-  private loggedIn: boolean = false;
+  private apiUrl = 'http://localhost:3000';
 
-  private email: string = "";
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.isLogged();
+  }
   
-  signIn(email: string, password: string): boolean {
-    // Simulate sign-in logic here
-    // Check if the provided email and password are valid
-    // You can use an API call or any other authentication mechanism
-
-    // For example, let's assume the email is "admin" and password is "password"
-    if (email === 'admin' && password === 'password') {
-      this.loggedIn = true;
-      return true;
-    } else {
-      this.loggedIn = false;
-      return false;
-    }
+  signIn(email: any, password: any): Observable<any> {
+    return this.http.post(this.apiUrl + "/signin", {email: email, password: password}, { withCredentials: true });
   }
 
-  signUp(email: string, password: string): any {
-    // Simulate sign-up logic here
-    // Check if the provided email is available and perform any necessary validation
-
-    // For example, let's assume the email is available
-    this.loggedIn = true;
-    return this.http.get("http://localhost:3000/notes")
-    
+  signOut(): Observable<any> {
+    console.log("logout");
+    return this.http.post(this.apiUrl + "/signout", { withCredentials: true });
   }
 
-  signOut(): void {
-    // Perform sign-out logic here
-    // Reset any necessary authentication-related data or tokens
-
-    this.loggedIn = false;
+  signUp(email: any, password: any, fullName: any, isCompany: any): Observable<any> {
+    return this.http.post(this.apiUrl + "/signup", {email: email, password: password, fullName: fullName, isCompany: isCompany}, { withCredentials: true })
   }
 
-  isLoggedIn(): boolean {
-    return this.loggedIn;
+  isLogged() {
+    this.http.get(this.apiUrl + "/isLogged",  { withCredentials: true }).subscribe(
+      (connectedUser) => {
+        this.connectedUser = connectedUser;
+        console.log(this.connectedUser);
+        console.log("connected");
+      },
+      (error) => {
+        console.log("not connected");
+      }
+    )
   }
 
 }

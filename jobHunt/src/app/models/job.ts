@@ -1,5 +1,5 @@
 export class Job {
-  id?: number;
+  _id?: number;
   title: string = "";
   company: string = "";
   location: string = "";

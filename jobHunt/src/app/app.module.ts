@@ -20,6 +20,10 @@ import { AccountComponent } from './account/account.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import { JobsComponent } from './jobs/jobs.component';
+import { JobEmployeeComponent } from './job-employee/job-employee.component';
+import { JobCompanyComponent } from './job-company/job-company.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { MyApplicationsComponent } from './my-applications/my-applications.compo
     AccountComponent,
     SignInComponent,
     SignUpComponent,
-    MyApplicationsComponent
+    MyApplicationsComponent,
+    AddJobComponent,
+    JobsComponent,
+    JobEmployeeComponent,
+    JobCompanyComponent
   ],
   imports: [
     BrowserModule,

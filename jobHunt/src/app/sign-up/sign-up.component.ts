@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  firstName: string = "";
-  lastName: string = "";
+  fullName: string = "";
   email: string = "";
   password: string = "";
+  isCompany: boolean = false;
+  userType: string = "";
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   signUp(): void {
-    this.authService.signUp(this.email, this.password);
-    // Perform any necessary actions upon successful sign-up
+    this.isCompany = (this.userType === "company") ? true : false;
+    this.authService.signUp(this.email, this.password, this.fullName, this.isCompany);
   }
 
   redirectToSignIn() {
