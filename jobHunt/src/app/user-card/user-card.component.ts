@@ -8,7 +8,7 @@ import { User } from '../models/user';
 })
 export class UserCardComponent {
   @Input()
-  user!: User;
+  user!: any;
 
   deleteUserFromJob() {
 

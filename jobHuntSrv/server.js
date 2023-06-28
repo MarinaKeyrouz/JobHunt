@@ -56,6 +56,29 @@ app.get('/jobs/:jobId', async (request, response) => {
         });
 });
 
+app.get('/jobSearch', async (request, response) => {
+    const searchTerm = request.query.searchTerm;
+
+    try {
+        let query = {};
+
+        if (searchTerm) {
+            query = {
+                $or: [
+                    { title: { $regex: searchTerm, $options: 'i' } },
+                    { description: { $regex: searchTerm, $options: 'i' } },
+                ],
+            };
+        }
+
+        const jobs = await Job.find(query);
+        response.json(jobs);
+    } catch (error) {
+        console.error(error);
+        response.status(500).json({ error: 'Failed to retrieve jobs' });
+    }
+});
+
 // get applied jobs from a user
 app.get('/user/appliedJobs/:userId', (request, response) => {
     const userId = request.params.userId;
@@ -115,13 +138,21 @@ app.post('/user/appliedJobs/:userId/:jobId', async (request, response) => {
     });
 });
 
-app.post('/jobs/appliedUsers/:jobId', async (request, response) => {
+app.post('/jobs/appliedUsers/:jobId/', async (request, response) => {
     const jobId = request.params.jobId;
-    const user = request.session.user;
+    const requestJob = request.body;
+
+    const newUser = {
+        email: requestJob.email,
+        fullName: requestJob.fullName,
+        isCompany: requestJob.isCompany,
+        appliedJobs: requestJob.appliedJobs,
+        cv: requestJob.cv
+    };
 
     Job.findOneAndUpdate(
         { _id: jobId }, 
-        { $push: { appliedUsers: user } }
+        { $push: { appliedUsers: newUser } }
     )
     .then(() => {
         response.status(200).json({ message: 'User added to job application successfully' });

@@ -19,10 +19,10 @@
     
     <span class="flex-spacer"></span>
     
-    <div class="search-container">
+    <div *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" class="search-container">
       <div class="input-group">
           <mat-icon class="search-icon" matPrefix>search</mat-icon>
-        <input class="form-control" placeholder="Search">
+        <input class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (keyup.enter)="search(searchTerm)">
       </div>
     </div>
 

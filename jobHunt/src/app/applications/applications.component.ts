@@ -10,9 +10,9 @@ import { User } from '../models/user';
   styleUrls: ['./applications.component.scss']
 })
 export class ApplicationsComponent {
- 
+
   jobs: Job[] = [];
-  users: User[] = [];
+  users: any[] = [];
   appliedJobs: any[] = [];
   appliedJobsId: any[] = [];
   result: any;
@@ -23,23 +23,34 @@ export class ApplicationsComponent {
   }
 
   ngOnInit(): void {
-    this.getMyApplications();
+    this.getMyApplications()
   }
 
-  getAllUsersFromJobs() {
-    for (const jobId of this.appliedJobsId) {
-      console.log(jobId);
-      this.jobApplicationService.getJob(jobId).subscribe(
-        (job: Job) => {
-          this.users.concat(job.appliedUsers);
-          console.log("users: ");
-          console.log(this.users)
-        },
-        (error: any) => {
-          console.log("Error");
-        }
-      )
-    }
+  onlyUnique(value: any, index: any, array: string | any[]) {
+    return array.indexOf(value) === index;
+  }
+
+  getAllAppliedUsers() {
+    this.appliedJobs.forEach(
+      (elem: any) => {
+        elem.forEach(
+          (job: Job) => {
+            job.appliedUsers.forEach(
+              (user: User) => {
+                const newElem = {
+                  fullName: user.fullName,
+                  cv: user.cv,
+                  jobTitle: job.title,
+                }
+                this.users.push(newElem);
+              }
+            )
+          }
+        )
+      }
+    )
+    this.users = this.users.filter(this.onlyUnique);
+    console.log(this.users);
   }
 
   getMyApplications() {
@@ -47,7 +58,12 @@ export class ApplicationsComponent {
       (appliedJobsId: any) => {
         this.appliedJobsId = appliedJobsId;
         if (this.appliedJobsId.length != 0) {
-          this.loadAppliedJobs();
+          this.loadAppliedJobs().then(
+            () => {
+              this.getAllAppliedUsers();
+            }
+          );
+
         }
       },
       (error: any) => {
@@ -72,7 +88,8 @@ export class ApplicationsComponent {
 
   async loadAppliedJobs() {
     this.appliedJobs = [];
-    for (const jobId of this.appliedJobsId) {
+    var unique = this.appliedJobsId.filter(this.onlyUnique);
+    for (const jobId of unique) {
       try {
         const appliedJob = await this.fetchJob(jobId);
         this.appliedJobs.push(appliedJob);
@@ -80,7 +97,5 @@ export class ApplicationsComponent {
         console.log("Error fetching job:", error);
       }
     }
-    this.getAllUsersFromJobs();
-    console.log(this.appliedJobs);
   }
 }

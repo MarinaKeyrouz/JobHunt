@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { JobApplicationService } from '../job-application.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,13 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  
-  constructor(private router: Router, public authService: AuthService) { 
+  searchTerm: String = "";
+
+  constructor(public router: Router, public jobApplicationService: JobApplicationService, public authService: AuthService) { 
+  }
+
+  search(searchTerm: String) {
+    this.router.navigate(['/search'], { queryParams: { searchTerm } });
   }
 
 }

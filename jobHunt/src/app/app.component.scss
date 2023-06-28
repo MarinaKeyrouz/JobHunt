@@ -1,5 +1,14 @@
 .footer {
-    bottom: 0px;
-    background-color: #f5f5f5;
+    position: realtive;
+    left: 0;
+    bottom: 0;
     width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

@@ -25,6 +25,11 @@ export class MyApplicationsComponent {
     this.getMyApplications();
   }
 
+  onlyUnique(value: any, index: any, array: string | any[]) {
+    return array.indexOf(value) === index;
+  }
+
+
   getMyApplications() {
     this.jobApplicationService.getJobApplicationsForAUser(this.authService.connectedUser._id).subscribe(
       (appliedJobsId: any) => {
@@ -55,7 +60,8 @@ export class MyApplicationsComponent {
 
   async loadAppliedJobs() {
     this.appliedJobs = [];
-    for (const jobId of this.appliedJobsId) {
+    var unique = this.appliedJobsId.filter(this.onlyUnique);
+    for (const jobId of unique) {
       try {
         const appliedJob = await this.fetchJob(jobId);
         this.appliedJobs.push(appliedJob);

@@ -11,6 +11,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { CompanyJobsComponent } from './company-jobs/company-jobs.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'candidatures', component:ApplicationsComponent},
   {path: 'companyJobs', component:CompanyJobsComponent},
   {path: 'myOffers', component:MyOffersComponent},
+  {path: 'search', component:SearchComponent},
 ];
 
 @NgModule({

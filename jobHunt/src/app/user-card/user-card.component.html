@@ -1,9 +1,7 @@
 <div class="job-card">
     <div class="job-card-header">
-        <h2 class="job-title">Full Name: {{ user.fullName }}</h2>
-        <p class="company-name">CV: {{ user.cv }}</p>
+        <p class="company-name">Job Title: {{ user.jobTitle }}</p>
+        <p class="job-title">Full Name: {{ user.fullName }}</p>
+        <p class="job-title">CV: {{ user.cv }}</p>
     </div>
-
-    <button (click)="deleteUserFromJob()" mat-raised-button>Delete</button>
-
 </div>
