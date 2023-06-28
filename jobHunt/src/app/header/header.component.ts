@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent {
   
-  constructor(private router: Router, public authService: AuthService) { }
+  constructor(private router: Router, public authService: AuthService) { 
+  }
 
 }

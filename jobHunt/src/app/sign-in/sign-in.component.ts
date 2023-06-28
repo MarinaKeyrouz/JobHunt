@@ -10,16 +10,21 @@ import { Router } from '@angular/router';
 export class SignInComponent {
   email: string = "";
   password: string = "";
+  isCompany: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   signIn(): void {
-    const isAuthenticated = this.authService.signIn(this.email, this.password);
-    if (isAuthenticated) {
-      // Perform any necessary actions upon successful sign-in
-    } else {
-      // Handle invalid credentials or display an error message
-    }
+    this.authService.signIn(this.email, this.password).subscribe(
+      (userInfo: any) => {
+        this.authService.isLogged();
+        this.authService.connectedUser = userInfo;
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log("error", error);
+      }
+    );
   }
 
   redirectToSignUp() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -12,8 +13,9 @@ export class AccountComponent {
   isCompany: boolean = false;
   isEditing: boolean = false;
 
-  constructor(private authService: AuthService) { 
-    this.authService.isLogged();
+  constructor(private authService: AuthService, private router: Router) { 
+    this.fullName = this.authService.connectedUser.fullName;
+    this.email = this.authService.connectedUser.email;
   }
 
   saveAccountInfo(): void {
@@ -32,7 +34,8 @@ export class AccountComponent {
   signOut() {
     this.authService.signOut().subscribe(
       () => {
-
+        this.router.navigate(['/home']);
+        this.authService.connectedUser = null;
       },
       (error) => {
       }

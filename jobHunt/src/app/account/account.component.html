@@ -3,26 +3,15 @@
     <div class="account-details">
         <div class="info-row">
             <div class="label">Full Name:</div>
-            <div class="value">
-                <ng-container *ngIf="isEditing; else viewModeFirstName">
-                    <input type="text" [(ngModel)]="fullName" />
-                </ng-container>
-                <ng-template #viewModeFirstName>{{ fullName }}</ng-template>
-            </div>
+            <div class="value">{{ fullName }}</div>
         </div>
         <div class="info-row">
             <div class="label">Email:</div>
-            <div class="value">
-                <ng-container *ngIf="isEditing; else viewModeEmail">
-                    <input type="email" [(ngModel)]="email" />
-                </ng-container>
-                <ng-template #viewModeEmail>{{ email }}</ng-template>
-            </div>
+            <div class="value">{{ email }}</div>
         </div>
     </div>
     <div class="actions">
-        <button (click)="toggleEditing()">{{ isEditing ? 'Save' : 'Edit' }}</button>
-        <button (click)="signOut()">Sign Out</button>
+        <button (click)="signOut()" mat-raised-button>Sign Out</button>
     </div>
 
     <div class="cv-upload">

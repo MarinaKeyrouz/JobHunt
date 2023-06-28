@@ -1,32 +1,34 @@
 import { Component } from '@angular/core';
-import { JobApplicationService } from '../job-application.service';
 import { Job } from '../models/job';
+import { JobApplicationService } from '../job-application.service';
 import { AuthService } from '../auth.service';
-import { User } from '../models/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-my-applications',
-  templateUrl: './my-applications.component.html',
-  styleUrls: ['./my-applications.component.scss']
+  selector: 'app-company-jobs',
+  templateUrl: './company-jobs.component.html',
+  styleUrls: ['./company-jobs.component.scss']
 })
-
-export class MyApplicationsComponent {
+export class CompanyJobsComponent {
   appliedJobs: any[] = [];
   appliedJobsId: any[] = [];
   result: any;
   hideButton = true;
   job: Job = new Job;
-  users: User[] = [];
+  companyId: string = "";
 
-  constructor(public jobApplicationService: JobApplicationService, public authService: AuthService) {
+  constructor(public jobApplicationService: JobApplicationService, public authService: AuthService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.getMyApplications();
+    this.route.queryParams.subscribe(params => {
+      this.companyId = params['companyId'];
+      this.getMyApplications(this.companyId);
+    });
   }
 
-  getMyApplications() {
-    this.jobApplicationService.getJobApplicationsForAUser(this.authService.connectedUser._id).subscribe(
+  getMyApplications(companyId: any) {
+    this.jobApplicationService.getJobApplicationsForAUser(companyId).subscribe(
       (appliedJobsId: any) => {
         this.appliedJobsId = appliedJobsId;
         if (this.appliedJobsId.length != 0) {

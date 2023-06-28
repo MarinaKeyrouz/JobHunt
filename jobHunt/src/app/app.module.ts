@@ -22,8 +22,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { JobsComponent } from './jobs/jobs.component';
-import { JobEmployeeComponent } from './job-employee/job-employee.component';
-import { JobCompanyComponent } from './job-company/job-company.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { CompanyComponent } from './company/company.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { CompanyJobsComponent } from './company-jobs/company-jobs.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +42,11 @@ import { JobCompanyComponent } from './job-company/job-company.component';
     MyApplicationsComponent,
     AddJobComponent,
     JobsComponent,
-    JobEmployeeComponent,
-    JobCompanyComponent
+    CompaniesComponent,
+    CompanyComponent,
+    ApplicationsComponent,
+    CompanyJobsComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,

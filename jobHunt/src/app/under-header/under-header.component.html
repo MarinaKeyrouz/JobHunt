@@ -5,16 +5,24 @@
       <h1>Explorez le monde professionnel et trouvez les opportunités les plus excitantes</h1>
     </div>
     <div class="right-section">
-        <a class="text-button" routerLink="/jobs">
+        <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button" routerLink="/jobs">
           Trouvez un job <i class="fas fa-arrow-right"></i>
         </a>
     
-        <a class="text-button" routerLink="/entreprise">
+        <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button" routerLink="/companies">
           Trouvez une entreprise <i class="fas fa-arrow-right"></i>
         </a>
-    
-        <a class="text-button" routerLink="/myapplications">
+
+        <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" class="text-button" routerLink="/myapplications">
           Mes Demandes <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button" routerLink="/addJob">
+          Ajouter un job <i class="fas fa-arrow-right"></i>
+        </a>
+    
+        <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button" routerLink="/candidatures">
+          Les candidatures <i class="fas fa-arrow-right"></i>
         </a>
     </div>      
   </div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { JobApplicationService } from '../job-application.service';
+import { AuthService } from '../auth.service';
+import { Job } from '../models/job';
 
 @Component({
   selector: 'app-add-job',
@@ -6,16 +9,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-job.component.scss']
 })
 export class AddJobComponent {
-  job: any = {
-    company: 'Your Company Name',
-    date: this.getTodayDate()
+
+  constructor(private jobApplicationService: JobApplicationService, public authService: AuthService) { }
+
+  job: Job = {
+    _id: "",
+    title: "",
+    company: this.authService.connectedUser.fullName,
+    location: "",
+    description: "",
+    date: this.getTodayDate(),
+    appliedUsers: [],
   };
 
-  submitJobForm() {
-    // Handle form submission
-    console.log(this.job);
-    // TODO: Send job data to backend or perform other actions
+  addJob(): void {
+    this.jobApplicationService.addJob(this.job).subscribe(
+      (job: Job) => {
+        console.log("Job Added");
+        this.jobApplicationService.addJobToUser(this.authService.connectedUser._id, job._id).subscribe(
+          () => {
+            console.log("Job Added");
+          },
+          (error: any) => {
+            console.log("Error add job");
+          }
+        )
+      },
+      (error: any) => {
+        console.log("Error add job");
+      }
+    )
   }
+
 
   getTodayDate(): string {
     const today = new Date();

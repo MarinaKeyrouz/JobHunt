@@ -1,5 +1,5 @@
 <app-under-header></app-under-header>
 
-<app-jobs></app-jobs>
+<app-jobs *ngIf="authService.connectedUser && !authService.connectedUser.isCompany"></app-jobs>
 
-<app-footer></app-footer>
+<app-my-applications *ngIf="authService.connectedUser && authService.connectedUser.isCompany"></app-my-applications>

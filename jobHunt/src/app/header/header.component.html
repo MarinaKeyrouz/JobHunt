@@ -5,10 +5,17 @@
     </a>
     
     <nav>
-      <a mat-button routerLink="/jobs">Trouver un job</a>
-      <a mat-button routerLink="/entreprise">Trouver une entreprise</a>
-      <a mat-button routerLink="/myapplications">Mes Demandes</a>
+      <ng-container *ngTemplateOutlet="userLinks"></ng-container>
     </nav>
+    
+    <ng-template #userLinks>
+      <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" mat-button routerLink="/jobs">Trouver un job</a>
+      <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" mat-button routerLink="/companies">Trouver une entreprise</a>
+      <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" mat-button routerLink="/myapplications">Mes Demandes</a>
+    
+      <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" mat-button routerLink="/addJob">Ajouter un job</a>
+      <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" mat-button routerLink="/candidatures">Les candidatures</a>
+    </ng-template>
     
     <span class="flex-spacer"></span>
     

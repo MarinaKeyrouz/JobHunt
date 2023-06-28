@@ -11,14 +11,25 @@ export class SignUpComponent {
   fullName: string = "";
   email: string = "";
   password: string = "";
-  isCompany: boolean = false;
   userType: string = "";
+  isCompany: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
   signUp(): void {
-    this.isCompany = (this.userType === "company") ? true : false;
-    this.authService.signUp(this.email, this.password, this.fullName, this.isCompany);
+    if (this.userType === "company") {
+      this.isCompany = true;
+    }
+    this.authService.signUp(this.email, this.password, this.fullName, this.isCompany).subscribe(
+      (userInfo: any) => {
+        this.authService.isLogged();
+        this.authService.connectedUser = userInfo;
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log("error", error);
+      }
+    );
   }
 
   redirectToSignIn() {

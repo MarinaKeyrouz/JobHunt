@@ -2,26 +2,31 @@
     <h2>Sign Up</h2>
     <form (ngSubmit)="signUp()">
         <div class="form-group">
-            <label for="fullName">Full Name</label>
+            <legend for="fullName">Full Name</legend>
             <input type="text" id="firstName" [(ngModel)]="fullName" name="firstName" required>
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
+            <legend for="email">Email</legend>
             <input type="email" id="email" [(ngModel)]="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <legend for="password">Password</legend>
             <input type="password" id="password" [(ngModel)]="password" name="password" required>
         </div>
         <div class="form-group">
+            <legend for="user-type">User Type</legend>
             <div class="radio-group">
-                <input type="radio" name="user-type" value="company" [(ngModel)]="userType" required>
-                Company
-                <input type="radio" name="user-type" value="employee" [(ngModel)]="userType" required>
-                Employee
+                <legend>
+                    <input type="radio" name="user-type" value="company" [(ngModel)]="userType" required>
+                    Company
+                </legend>
+                <legend>
+                    <input type="radio" name="user-type" value="employee" [(ngModel)]="userType" required>
+                    Employee
+                </legend>
             </div>
-          </div>
-        <button (click)="signUp()" type="submit">Sign Up</button>
+        </div>
+        <button (click)="signUp()" type="button" mat-raised-button>Sign Up</button>
     </form>
 
     <p>

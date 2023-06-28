@@ -1,8 +1,8 @@
 <div class="my-applications-container">
-    <h2>Mes Demandes</h2>
+    <h2>Les offres d'emplois</h2>
     <div class="job-cards">
         <ng-container *ngFor="let nestedArray of appliedJobs">
-          <app-job-card *ngFor="let job of nestedArray" [job]="job" [showButtons]="true"></app-job-card>
+            <app-job-card *ngFor="let job of nestedArray" [job]="job" ></app-job-card>
         </ng-container>
-      </div>
+    </div>
 </div>

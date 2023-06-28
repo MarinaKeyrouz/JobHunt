@@ -7,18 +7,23 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { JobsComponent } from './jobs/jobs.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { CompanyJobsComponent } from './company-jobs/company-jobs.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'home', component:HomeComponent},
-  {path:'jobs', component:JobsComponent},
-  {path:'entreprise', component:HomeComponent},
-  {path:'salaire', component:HomeComponent},
-  {path:'account', component:AccountComponent},
-  {path:'signin', component:SignInComponent},
-  {path:'signup', component:SignUpComponent},
-  {path:'myapplications', component:MyApplicationsComponent},
+  {path: '', component:HomeComponent},
+  {path: 'home', component:HomeComponent},
+  {path: 'jobs', component:JobsComponent},
+  {path: 'companies', component:CompaniesComponent},
+  {path: 'salaire', component:HomeComponent},
+  {path: 'account', component:AccountComponent},
+  {path: 'signin', component:SignInComponent},
+  {path: 'signup', component:SignUpComponent},
+  {path: 'myapplications', component:MyApplicationsComponent},
   {path: 'addJob', component:AddJobComponent},
+  {path: 'candidatures', component:ApplicationsComponent},
+  {path: 'companyJobs', component:CompanyJobsComponent},
 ];
 
 @NgModule({

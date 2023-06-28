@@ -1,13 +1,34 @@
 <div class="job-card">
     <div class="job-card-header">
-        <h2 class="job-title">{{ job.title }}</h2>
-        <p class="company-name">{{ job.company }}</p>
+        <h2 class="job-title">Title: {{ job.title }}</h2>
+        <p class="company-name">Company: {{ job.company }}</p>
     </div>
     <div class="job-card-content">
-        <p class="job-location">{{ job.location }}</p>
-        <p class="job-description">{{ job.description }}</p>
+        <p class="job-location">Location:
+            <ng-container *ngIf="isEditing; else viewModeLocation">
+                <input type="text" [(ngModel)]="job.location" />
+            </ng-container>
+            <ng-template #viewModeLocation>{{ job.location }}</ng-template>
+        </p>
+        <p class="job-description">Description:
+            <ng-container *ngIf="isEditing; else viewModeDescription">
+                <input type="text" [(ngModel)]="job.description" />
+            </ng-container>
+            <ng-template #viewModeDescription>{{ job.description }}</ng-template>
+        </p>
     </div>
     <div class="job-card-footer">
-        <p class="job-date">{{ job.date }}</p>
+        <p class="job-date">Date: {{ job.date }}</p>
     </div>
+
+    <button *ngIf="showButtons && authService.connectedUser && authService.connectedUser.isCompany"
+        (click)="toggleEditMode()" mat-raised-button>
+        {{ isEditing ? 'Save' : 'Edit' }}
+    </button>
+
+    <button *ngIf="authService.connectedUser && authService.connectedUser.isCompany"
+        (click)="deleteJob()" mat-raised-button>Delete</button>
+
+    <button *ngIf="showButtons && authService.connectedUser && !authService.connectedUser.isCompany"
+        (click)="applyToJob()" mat-raised-button>Apply</button>
 </div>
