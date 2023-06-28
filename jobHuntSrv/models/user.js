@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true },
     isCompany: { type: Boolean, required: true },
     appliedJobs: { type: Array, required: true },
-    cv: { type: Buffer },
+    cv: { type: Buffer }
 });
 
 module.exports = mongoose.model('User', userSchema);

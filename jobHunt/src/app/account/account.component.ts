@@ -13,7 +13,7 @@ export class AccountComponent {
   isCompany: boolean = false;
   isEditing: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { 
+  constructor(public authService: AuthService, private router: Router) { 
     this.fullName = this.authService.connectedUser.fullName;
     this.email = this.authService.connectedUser.email;
   }

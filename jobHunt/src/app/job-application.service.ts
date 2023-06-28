@@ -26,14 +26,17 @@ export class JobApplicationService {
   }
 
   addJobToUser(userId: any, jobId: any): Observable<any> {
+    console.log("POST http://localhost:3000/" + "user/appliedJobs/" + userId + "/" + jobId);
     return this.http.post("http://localhost:3000/" + "user/appliedJobs/" + userId + "/" + jobId, null);
   }
 
   addUsertoJob(user: User, jobId: any): Observable<any> {
+    console.log("ADD http://localhost:3000/" + "jobs/appliedUsers/" + jobId);
     return this.http.post("http://localhost:3000/" + "jobs/appliedUsers/" + jobId, user);
   }
 
   getUsersFromJob(jobId: any): Observable<any> {
+    console.log("GET http://localhost:3000/" + "jobs/appliedUsers/" + jobId);
     return this.http.get("http://localhost:3000/" + "jobs/appliedUsers/" + jobId);
   }
   

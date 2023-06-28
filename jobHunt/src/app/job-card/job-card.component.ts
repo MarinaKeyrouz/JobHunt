@@ -70,7 +70,9 @@ export class JobCardComponent {
     this.jobApplicationService.addJobToUser(this.authService.connectedUser._id, this.job._id).subscribe(
       () => {
         this.jobApplicationService.addUsertoJob(this.authService.connectedUser, this.job._id).subscribe(
-          () => {},
+          () => {
+            
+          },
           (error: any) => {
             console.log("Error apply job");
           }

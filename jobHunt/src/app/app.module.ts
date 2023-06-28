@@ -27,6 +27,7 @@ import { CompanyComponent } from './company/company.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { CompanyJobsComponent } from './company-jobs/company-jobs.component';
 import { UserCardComponent } from './user-card/user-card.component';
+import { MyOffersComponent } from './my-offers/my-offers.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     ApplicationsComponent,
     CompanyJobsComponent,
     UserCardComponent,
+    MyOffersComponent,
   ],
   imports: [
     BrowserModule,

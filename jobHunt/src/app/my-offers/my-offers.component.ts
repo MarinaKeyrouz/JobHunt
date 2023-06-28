@@ -1,45 +1,27 @@
 import { Component } from '@angular/core';
-import { Job } from '../models/job';
 import { JobApplicationService } from '../job-application.service';
 import { AuthService } from '../auth.service';
+import { Job } from '../models/job';
 import { User } from '../models/user';
 
 @Component({
-  selector: 'app-applications',
-  templateUrl: './applications.component.html',
-  styleUrls: ['./applications.component.scss']
+  selector: 'app-my-offers',
+  templateUrl: './my-offers.component.html',
+  styleUrls: ['./my-offers.component.scss']
 })
-export class ApplicationsComponent {
- 
-  jobs: Job[] = [];
-  users: User[] = [];
+export class MyOffersComponent {
   appliedJobs: any[] = [];
   appliedJobsId: any[] = [];
   result: any;
   hideButton = true;
   job: Job = new Job;
+  users: User[] = [];
 
   constructor(public jobApplicationService: JobApplicationService, public authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.getMyApplications();
-  }
-
-  getAllUsersFromJobs() {
-    for (const jobId of this.appliedJobsId) {
-      console.log(jobId);
-      this.jobApplicationService.getJob(jobId).subscribe(
-        (job: Job) => {
-          this.users.concat(job.appliedUsers);
-          console.log("users: ");
-          console.log(this.users)
-        },
-        (error: any) => {
-          console.log("Error");
-        }
-      )
-    }
   }
 
   getMyApplications() {
@@ -80,7 +62,6 @@ export class ApplicationsComponent {
         console.log("Error fetching job:", error);
       }
     }
-    this.getAllUsersFromJobs();
     console.log(this.appliedJobs);
   }
 }

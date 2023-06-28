@@ -116,8 +116,8 @@ app.post('/user/appliedJobs/:userId/:jobId', async (request, response) => {
 });
 
 app.post('/jobs/appliedUsers/:jobId', async (request, response) => {
-    const user = request.session.user;
     const jobId = request.params.jobId;
+    const user = request.session.user;
 
     Job.findOneAndUpdate(
         { _id: jobId }, 
@@ -149,7 +149,6 @@ app.get('/jobs/appliedUsers/:jobId', async (request, response) => {
         });
 });
 
-
 app.delete('/user/appliedJobs/:userId', (request, response) => {
     const userId = request.params.userId;
     const jobId = request.session.jobId;
@@ -163,8 +162,6 @@ app.delete('/user/appliedJobs/:userId', (request, response) => {
             response.status(500).json({ error: 'Failed to add job to user' });
         });
 });
-
-
 
 // update job
 app.put('/jobs/:id', (request, response) => {

@@ -14,8 +14,8 @@
         <button (click)="signOut()" mat-raised-button>Sign Out</button>
     </div>
 
-    <div class="cv-upload">
+    <ng-container class="cv-upload" *ngIf="!authService.connectedUser.isCompany">
         <h3>Upload CV</h3>
         <input type="file" accept=".pdf" (change)="handleCVUpload($event)" />
-    </div>
+    </ng-container>
 </div>
