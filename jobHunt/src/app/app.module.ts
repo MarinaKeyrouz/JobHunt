@@ -29,6 +29,7 @@ import { CompanyJobsComponent } from './company-jobs/company-jobs.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 import { SearchComponent } from './search/search.component';
+import { NosExpertsComponent } from './nos-experts/nos-experts.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SearchComponent } from './search/search.component';
     UserCardComponent,
     MyOffersComponent,
     SearchComponent,
+    NosExpertsComponent,
   ],
   imports: [
     BrowserModule,

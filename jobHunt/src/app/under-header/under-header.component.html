@@ -1,29 +1,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <div class="custom-component">
-    <div class="left-section">
-      <h1>Explorez le monde professionnel et trouvez les opportunités les plus excitantes</h1>
-    </div>
-    <div class="right-section">
-        <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button" routerLink="/jobs">
-          Trouvez un job <i class="fas fa-arrow-right"></i>
-        </a>
-    
-        <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button" routerLink="/companies">
-          Trouvez une entreprise <i class="fas fa-arrow-right"></i>
-        </a>
-
-        <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" class="text-button" routerLink="/myapplications">
-          Mes Demandes <i class="fas fa-arrow-right"></i>
-        </a>
-
-        <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button" routerLink="/addJob">
-          Ajouter un job <i class="fas fa-arrow-right"></i>
-        </a>
-    
-        <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button" routerLink="/candidatures">
-          Les candidatures <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>      
+  <div class="left-section">
+    <h1>Explorez le monde professionnel et trouvez les opportunités les plus excitantes</h1>
   </div>
-  
+  <div class="right-section">
+    <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button"
+      routerLink="/jobs">
+      Trouvez un job <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" class="text-button"
+      routerLink="/companies">
+      Trouvez une entreprise <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" class="text-button"
+      routerLink="/myapplications">
+      Mes Demandes <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button"
+      routerLink="/addJob">
+      Ajouter un job <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <a *ngIf="authService.connectedUser && authService.connectedUser.isCompany" class="text-button"
+      routerLink="/candidatures">
+      Les candidatures <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>

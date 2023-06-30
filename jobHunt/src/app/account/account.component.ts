@@ -14,7 +14,6 @@ export class AccountComponent {
   isEditing: boolean = false;
   isSaving: boolean = false;
   
-  
 
   constructor(public authService: AuthService, private router: Router) { 
     this.fullName = this.authService.connectedUser.fullName;
