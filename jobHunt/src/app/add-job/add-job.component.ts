@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { JobApplicationService } from '../job-application.service';
 import { AuthService } from '../auth.service';
 import { Job } from '../models/job';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-job',
@@ -10,7 +11,9 @@ import { Job } from '../models/job';
 })
 export class AddJobComponent {
 
-  constructor(private jobApplicationService: JobApplicationService, public authService: AuthService) { }
+  constructor(private jobApplicationService: JobApplicationService, public authService: AuthService, public router: Router) { }
+
+  myForm: any;
 
   job: Job = {
     _id: "",
@@ -25,9 +28,11 @@ export class AddJobComponent {
   addJob(): void {
     this.jobApplicationService.addJob(this.job).subscribe(
       (job: Job) => {
-        console.log("Job Added");
         this.jobApplicationService.addJobToUser(this.authService.connectedUser._id, job._id).subscribe(
           () => {
+            job.title = "";
+            job.location = "";
+            job.description = "";
             console.log("Job Added");
           },
           (error: any) => {

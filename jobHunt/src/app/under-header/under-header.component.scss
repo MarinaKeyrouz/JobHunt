@@ -1,8 +1,10 @@
 .custom-component {
     display: flex;
-    background-color: limegreen;
+    background-image: url(https://cdn.pixabay.com/photo/2021/04/15/11/53/office-desk-6180925_1280.jpg);
     color: black;
     height: 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   
   .left-section {

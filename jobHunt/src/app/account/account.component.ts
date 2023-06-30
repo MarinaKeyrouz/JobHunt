@@ -12,23 +12,36 @@ export class AccountComponent {
   email: string = "";
   isCompany: boolean = false;
   isEditing: boolean = false;
+  isSaving: boolean = false;
+  
+  
 
   constructor(public authService: AuthService, private router: Router) { 
     this.fullName = this.authService.connectedUser.fullName;
     this.email = this.authService.connectedUser.email;
   }
 
-  saveAccountInfo(): void {
-    this.toggleEditing();
-  }
-
-  toggleEditing(): void {
-    this.isEditing = !this.isEditing;
+  toggleEditMode() {
+    if (this.isEditing) {
+      this.isEditing = false;
+      this.isSaving = true;
+      this.authService.updateUser(this.fullName).subscribe(
+        () => {
+          console.log("User Updated");
+          this.authService.isLogged();
+        },
+        (error: any) => {
+          console.log("Error update user");
+        }
+      )
+      this.isSaving = false;
+    } else {
+      this.isEditing = true;
+    }
   }
 
   handleCVUpload(event: any) {
     const file = event.target.files[0];
-    // Additional logic for handling CV upload
   }
 
   signOut() {

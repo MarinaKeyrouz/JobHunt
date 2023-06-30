@@ -1,8 +1,7 @@
 <div class="job-form-container">
     <h2>Add New Job</h2>
-    <form>
+    <form id="myForm" (ngSubmit)="addJob()">
         <div class="form-group">
-            <legend for="title">Title:</legend>
             <input type="text" id="title" [(ngModel)]="job.title" name="title" required>
         </div>
         <div class="form-group">
@@ -17,6 +16,6 @@
             <legend for="date">Date:</legend>
             <input type="date" id="date" [(ngModel)]="job.date" name="date" required>
         </div>
-        <button (click)="addJob()" type="button" mat-raised-button>Add Job</button>
+        <button type="submit" mat-raised-button>Add Job</button>
     </form>
 </div>

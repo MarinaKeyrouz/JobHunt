@@ -294,6 +294,28 @@ app.get('/user/signout', (request, response) => {
         });
 });
 
+app.post('/user/:id', (request, response) => {
+    const userId = request.params.id;
+    const fullName = request.body.fullName;
+
+    console.log(fullName);
+    console.log(userId);
+
+    const filter = { _id: userId };
+    const update = { $set: { fullName: fullName } };
+    const returnNew = { returnOriginal: false };
+    const overwrite = { overwrite: true };
+
+    User.findOneAndUpdate(filter, update, {new: true, upsert: false, remove: {}, fields: {}})
+    .then(() => {
+        response.status(200).json({ message: 'Update User'});
+    })
+    .catch(error => {
+        console.error(error);
+        response.status(500).json({ error: 'Failed to update User' });
+    });
+});
+
 app.get('/user/isLogged', (request, response) => {
     if (!request.session.userId) {
         return response.status(401).json();
