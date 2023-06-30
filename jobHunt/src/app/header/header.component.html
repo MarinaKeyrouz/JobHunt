@@ -9,7 +9,7 @@
     </nav>
     
     <ng-template #userLinks>
-      <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" mat-button routerLink="/jobs">Trouver un job</a>
+      <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" mat-button routerLink="/jobs">Trouver un job</a>
       <a *ngIf="!authService.connectedUser || !authService.connectedUser.isCompany" mat-button routerLink="/companies">Trouver une entreprise</a>
       <a *ngIf="authService.connectedUser && !authService.connectedUser.isCompany" mat-button routerLink="/myapplications">Mes Demandes</a>
     
@@ -33,8 +33,8 @@
           <i class="material-icons white-icon">account_circle</i>
         </a>
       </span>
-      <button *ngIf="!authService.connectedUser" routerLink="/signin" routerLinkActive="active-link" mat-raised-button color="accent">Sign In</button>
-      <button *ngIf="!authService.connectedUser" routerLink="/signup" routerLinkActive="active-link" mat-raised-button color="accent">Sign Up</button>
+      <button *ngIf="!authService.connectedUser" routerLink="/signin" routerLinkActive="active-link" class="mat-button" mat-raised-button color="accent">Sign In</button>
+      <button *ngIf="!authService.connectedUser" routerLink="/signup" routerLinkActive="active-link" class="mat-button" mat-raised-button color="accent">Sign Up</button>
     </div>
 
     

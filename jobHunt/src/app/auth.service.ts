@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   updateUser(fullName: any): Observable<any> {
-    return this.http.post(this.apiUrl + "/user/" + this.connectedUser._id, { fullName: fullName }, { withCredentials: true });
+    return this.http.put(this.apiUrl + "/user/" + this.connectedUser._id, { fullName: fullName }, { withCredentials: true });
   }
 
   isLogged() {

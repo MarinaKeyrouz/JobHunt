@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="actions">
-        <button id="btn" (click)="toggleEditMode()" mat-raised-button>
+        <button (click)="toggleEditMode()" mat-raised-button>
             {{ isEditing ? 'Save' : 'Edit' }}
         </button>
         <button (click)="signOut()" mat-raised-button>Sign Out</button>

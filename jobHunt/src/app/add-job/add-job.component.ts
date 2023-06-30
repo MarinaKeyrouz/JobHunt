@@ -30,10 +30,8 @@ export class AddJobComponent {
       (job: Job) => {
         this.jobApplicationService.addJobToUser(this.authService.connectedUser._id, job._id).subscribe(
           () => {
-            job.title = "";
-            job.location = "";
-            job.description = "";
             console.log("Job Added");
+            this.router.navigate(['/home']);
           },
           (error: any) => {
             console.log("Error add job");

@@ -294,7 +294,7 @@ app.get('/user/signout', (request, response) => {
         });
 });
 
-app.post('/user/:id', (request, response) => {
+app.put('/user/:id', (request, response) => {
     const userId = request.params.id;
     const fullName = request.body.fullName;
 

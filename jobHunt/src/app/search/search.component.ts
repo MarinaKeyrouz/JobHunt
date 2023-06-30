@@ -19,8 +19,8 @@ export class SearchComponent {
   ngOnInit() {
     this.router.queryParams.subscribe(params => {
       this.searchTerm = params['searchTerm'];
+      this.search();
     });
-    this.search();
   }
 
   search() {
